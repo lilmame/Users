@@ -1,0 +1,10 @@
+.user {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 50px;
+    min-height: 50vh;
+  }

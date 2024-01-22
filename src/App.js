@@ -1,32 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from 'react';
+import PhotoCard from './components/PhotoCard/PhotoCard';
+import Photos from './components/Photos/Photos';
+import Users from './components/Users/Users';
+import { Outlet, Link } from "react-router-dom";
+
 function App() {
-  const [users, setUsers] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    setLoading(true);
-    setError('')
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .finally(() => setLoading(false))
-      .then(res => res.json())
-      .then(users => setUsers(users))
-      .catch(error=> setError(error.toString()))
-  }, [])
-
   return (
-    <div className="App">
-      {
-        loading ? <h1>Loading...</h1> :
-        error ? <p>Error:{ error }</p>:
-        users.map(user => (<>
-          <h5>{ user.name }</h5>
-          <p>{ user.email }</p>
-        </>))
-      }
-    </div>
+    <>
+      <div id="sidebar">
+        {/* other elements */}
+
+        <nav>
+          <ul>
+            <li>
+              <Link to={`users`}>Users</Link>
+            </li>
+            <li>
+              <Link to={`photos`}>Photos</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* other elements */}
+      </div>
+    </>
+    
   );
 }
 
